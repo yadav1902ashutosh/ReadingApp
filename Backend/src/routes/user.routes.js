@@ -11,7 +11,7 @@ router.route("/register").post(registerUser)
 router.route("/login").post(loginUser)
 
 //setting secured routes using middleware services
-routerl.route("/logout").post(verifyJWT, logoutUser)
+router.route("/logout").post(verifyJWT, logoutUser)
 
 
 

@@ -1,0 +1,43 @@
+import react from 'react'
+
+function Navbar({activeTab = 'The Stacks', onSelectTab}) {
+    const navItems = [
+        { id: 'stacks', label: 'The Stacks' },
+        { id: 'archives', label: 'Grand Archives' },
+        { id: 'genres', label: 'Literary Genres' },
+        { id: 'study', label: 'Personal Study' },
+        { id: 'journal', label: 'Scriptorium Journal' },
+        { id: 'saloon', label: 'Reading Saloon' },
+    ];
+
+    return (
+        <nav
+        className='hidden xl:flex items-center gap-1 bg-surface-container-low/70 dark:bg-surface-container-high/30 p-1 rounded-xl border border-[#E2D8B8]/60 dark:border-[#59413e]/60'
+        >
+            {
+                navItems.map((item) => {
+                    const isActive = activeTab === item.label;
+
+                    return (
+                        <a 
+                        key={item.id}
+                        href={`#${item.id}`}
+                        onClick={
+                            (e)=>{
+                                e.preventDefault()
+                                onSelectTab(item.label)
+                        }
+                    }
+                        className={`px-3 py-1.5 rounded-lg transition-colors font-label text-label-md 
+                            ${isActive? 'bg-surface-container-high dark:bg-surface-container text-primary dark:text-primary-fixed font-bold shadow-inner': 'text-on-surface-variant hover:text-on-surface hover:bg-surface-container/50 dark:hover:bg-surface-container-high/50'}`}
+                        >
+                        {item.label}
+                        </a>
+                    )
+                })
+            }
+        </nav>
+    )
+}
+
+export default Navbar
