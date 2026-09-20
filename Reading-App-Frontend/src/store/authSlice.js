@@ -2,7 +2,8 @@
 
  const initialState = {
     status: false,
-    userData: null
+    userData: null,
+    isInitialized: false,
  }
 
  const authSlice = createSlice({
@@ -12,10 +13,12 @@
         login: (state, action) => {
             state.status = true;
             state.userData = action.payload.userData;
+            state.isInitialized = true;
         },
         logout: (state) => {
             state.status = false;
             state.userData = null;
+            state.isInitialized = true;
         }
     }
  })

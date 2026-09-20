@@ -9,6 +9,7 @@ export default function ProfileHeader({ onInscribeEntry, onLedgerClick }) {
   const username = userData?.username || "boot_reader_one";
   const avatarInitial = (username.trim()[0] || "B").toUpperCase();
   const avatarUrl = userData?.avatar;
+  const bannerUrl = userData?.bannerImage;
   const bio = userData?.bio || "In parchment we trust, in stories we linger.";
   const role = userData?.role ? `${userData.role.toUpperCase()} • TIER IV` : "MASTER SCRIBE • TIER IV";
 
@@ -19,6 +20,14 @@ export default function ProfileHeader({ onInscribeEntry, onLedgerClick }) {
 
   return (
     <div className="relative overflow-hidden bg-surface-container-low dark:bg-surface-container rounded-xl shadow-[0_4px_20px_-4px_rgba(68,64,60,0.08)] p-4 sm:p-6 md:p-8 mb-6 border border-[#E2D8B8]/70 dark:border-outline-variant/30">
+      {/* Background Banner Image if present */}
+      {bannerUrl && (
+        <div
+          className="absolute inset-0 bg-cover bg-center opacity-15 dark:opacity-10 pointer-events-none"
+          style={{ backgroundImage: `url(${bannerUrl})` }}
+        />
+      )}
+
       {/* Ambient background glows */}
       <div className="absolute -right-16 -bottom-16 w-96 h-96 rounded-full bg-secondary-fixed/30 dark:bg-secondary/10 blur-3xl pointer-events-none" />
       <div className="absolute -left-12 -top-12 w-64 h-64 rounded-full bg-primary-fixed/20 dark:bg-primary/10 blur-2xl pointer-events-none" />

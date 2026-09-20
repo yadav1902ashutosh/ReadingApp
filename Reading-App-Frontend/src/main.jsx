@@ -28,19 +28,29 @@ import Login from './pages/Login.jsx'
 import Signup from './pages/Signup.jsx'
 import {Profile} from './components/index.js'
 const router = createBrowserRouter(
-  [{    path:"/",
-    element:<App />,
-    children:[
-      {
-        path:"/home",
-        element:<Home />
-      },
-      {
-        path:"/profile",
-        element: <Profile />
-      }
-    ]
-  },
+  [
+    {
+      path: "/",
+      element: <App />,
+      children: [
+        {
+          index: true,
+          element: <Home />,
+        },
+        {
+          path: "/home",
+          element: <Home />,
+        },
+        {
+          path: "/profile",
+          element: (
+            <AuthLayout authentication={true}>
+              <Profile />
+            </AuthLayout>
+          ),
+        },
+      ],
+    },
   {
     path: '/login',
     element: <Login />,

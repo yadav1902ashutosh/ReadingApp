@@ -47,7 +47,9 @@ export default function ProfileMenu() {
   const displayName = userData?.fullName || userData?.username || "Boot Reader One";
   const username = userData?.username || "boot_reader_one";
   const email = userData?.email || "boot_reader_one@deckle.library";
+  const avatarUrl = userData?.avatar;
   const avatarInitial = (username.trim()[0] || "B").toUpperCase();
+  const roleDisplay = userData?.role ? `${userData.role.toUpperCase()} • TIER IV` : "MASTER SCRIBE • TIER IV";
 
   const menuItems = [
     {
@@ -55,14 +57,14 @@ export default function ProfileMenu() {
       iconColor: "text-primary",
       label: "Inscribed Stacks & Folios",
       badge: "3 Active",
-      to: "/home",
+      to: "/profile",
     },
     {
       icon: "draw",
       iconColor: "text-secondary",
       label: "Scriptorium Marginalia",
       badge: "48 Notes",
-      to: "/home",
+      to: "/profile",
     },
     {
       icon: "account_balance_wallet",
@@ -70,14 +72,14 @@ export default function ProfileMenu() {
       label: "Treasury & Florin Coffers",
       badge: "140 🪙",
       badgeStyle: "font-label-sm text-[11px] font-semibold text-secondary",
-      to: "/home",
+      to: "/profile",
     },
     {
       icon: "tune",
       iconColor: "text-on-surface-variant",
       label: "Scribe Preferences & Font",
       chevron: true,
-      to: "/home",
+      to: "/profile",
     },
   ];
 
@@ -97,9 +99,17 @@ export default function ProfileMenu() {
       >
         {authStatus ? (
           <div className="relative">
-            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-primary to-primary-container text-on-primary font-headline font-bold text-sm flex items-center justify-center shadow-sm ring-1 ring-[#D5C79E] dark:ring-outline-variant select-none tracking-wider">
-              {avatarInitial}
-            </div>
+            {avatarUrl ? (
+              <img
+                alt={displayName}
+                src={avatarUrl}
+                className="w-8 h-8 rounded-full object-cover shadow-sm ring-1 ring-[#D5C79E] dark:ring-outline-variant"
+              />
+            ) : (
+              <div className="w-8 h-8 rounded-full bg-gradient-to-br from-primary to-primary-container text-on-primary font-headline font-bold text-sm flex items-center justify-center shadow-sm ring-1 ring-[#D5C79E] dark:ring-outline-variant select-none tracking-wider">
+                {avatarInitial}
+              </div>
+            )}
             <span className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-emerald-600 rounded-full border-2 border-surface-container-lowest" />
           </div>
         ) : (
@@ -135,9 +145,17 @@ export default function ProfileMenu() {
               >
                 <div className="flex items-start gap-space-sm">
                   <div className="relative flex-shrink-0">
-                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-primary-container text-on-primary font-headline font-bold text-base flex items-center justify-center shadow-md ring-2 ring-primary/30 select-none tracking-wider">
-                      {avatarInitial}
-                    </div>
+                    {avatarUrl ? (
+                      <img
+                        alt={displayName}
+                        src={avatarUrl}
+                        className="w-10 h-10 rounded-full object-cover shadow-md ring-2 ring-primary/30"
+                      />
+                    ) : (
+                      <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-primary-container text-on-primary font-headline font-bold text-base flex items-center justify-center shadow-md ring-2 ring-primary/30 select-none tracking-wider">
+                        {avatarInitial}
+                      </div>
+                    )}
                     <span className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-emerald-600 rounded-full border-2 border-[#fdf9f0]" />
                   </div>
                   <div className="flex flex-col min-w-0 flex-1">
@@ -146,12 +164,17 @@ export default function ProfileMenu() {
                         {displayName}
                       </span>
                       <span className="px-1.5 py-0.5 rounded bg-primary-fixed text-primary font-label-sm text-[10px] font-bold uppercase tracking-wider shrink-0">
-                        Tier IV
+                        {roleDisplay}
                       </span>
                     </div>
                     <span className="font-body-sm text-[12px] text-on-surface-variant truncate block max-w-full">
                       {email}
                     </span>
+                    {userData?.bio && (
+                      <p className="font-body text-[11px] italic text-on-surface-variant/80 truncate max-w-full mt-0.5">
+                        "{userData.bio}"
+                      </p>
+                    )}
                     <span className="font-label-sm text-[11px] text-primary font-semibold mt-1 group-hover:underline flex items-center gap-0.5">
                       View Personal Study & Codex
                       <span className="material-symbols-outlined text-[14px]">arrow_forward</span>
