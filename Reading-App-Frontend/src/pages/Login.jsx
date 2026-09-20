@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { login as authLogin } from "../store/authSlice";
 import authService from "../auth/auth";
+import deckleInsignia from "../assets/deckle-insignia.png";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -75,7 +76,7 @@ export default function Login() {
                 <img
                   alt="Deckle Insignia"
                   className="w-24 h-24 rounded-full object-cover transition-transform duration-500 hover:scale-105"
-                  src="https://lh3.googleusercontent.com/aida/AEtjO1VtgK-Fw_rrCee2fWjkgcxqwNZ3g6CkO_ByMTQHmQIbcoxoMB_bFo0pQB3sfY9nQXlPgVDjfNnV3wKrdrbw0-5pSdLbE3PskoysXYoZyBK8PL3rgJvRqxs-j2-Muz29GQschcghqEgo62Z-eRRiuDjLqN3XjG2Lm3MdHXqT4XaYjiEh5Jodwlj7TAgHXpsEVrfpxHn3mLzKmlziI--98L17BquTRoTpZEZYywBcBuTs5TLq3GBYP1jE0Ow"
+                  src={deckleInsignia}
                 />
                 <div className="absolute -bottom-2 bg-primary text-on-primary px-3 py-0.5 rounded-full shadow-sm">
                   <span className="font-label-sm text-label-sm uppercase tracking-widest text-[9px]">
@@ -277,14 +278,36 @@ export default function Login() {
                   </span>
                 </Link>
               </p>
-              <a
+              <Link
                 className="inline-flex items-center gap-1.5 font-label-sm text-label-sm text-secondary hover:text-on-secondary-container transition-colors py-1 px-3 rounded-full bg-secondary-fixed/30 hover:bg-secondary-fixed/50"
-                href="#"
+                to="/home"
               >
                 <span className="material-symbols-outlined text-sm">auto_stories</span>
                 Guest of Honor: Browse public folios without an account
-              </a>
+              </Link>
             </div>
+              <div className="absolute bottom-0 left-0 w-16 h-16 pointer-events-none opacity-25 transform scale-y-[-1]">
+                  <svg className="text-tertiary-container w-full h-full" fill="none" viewBox="0 0 64 64">
+                    <path
+                      d="M4 4 L60 4 M4 4 L4 60 M12 12 L52 12 M12 12 L12 52 M4 20 C10 16 16 10 20 4 M44 4 C48 10 54 16 60 20 M4 44 C10 48 16 54 20 60"
+                      stroke="currentColor"
+                      strokeLinecap="round"
+                      strokeWidth="1.5"
+                    />
+                    <circle cx="20" cy="20" fill="currentColor" r="3" />
+                  </svg>
+              </div>
+              <div className="absolute bottom-0 right-0 w-16 h-16 pointer-events-none opacity-25 transform scale-[-1]">
+                  <svg className="text-tertiary-container w-full h-full" fill="none" viewBox="0 0 64 64">
+                    <path
+                      d="M4 4 L60 4 M4 4 L4 60 M12 12 L52 12 M12 12 L12 52 M4 20 C10 16 16 10 20 4 M44 4 C48 10 54 16 60 20 M4 44 C10 48 16 54 20 60"
+                      stroke="currentColor"
+                      strokeLinecap="round"
+                      strokeWidth="1.5"
+                    />
+                    <circle cx="20" cy="20" fill="currentColor" r="3" />
+                  </svg>
+              </div>  
           </div>
 
           <div className="mt-4 text-center">

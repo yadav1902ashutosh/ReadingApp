@@ -114,9 +114,9 @@ export const registerUser = asyncHandler(async (req, res) => {
     .json(new ApiResponse(201, createdUser, "User registered successfully"));
 });
 
-// -----------------------------------------------------------------------------
-// CONTROLLER: Login User
-// -----------------------------------------------------------------------------
+
+//Login User
+
 export const loginUser = asyncHandler(async (req, res) => {
   const { email, username, password } = req.body;
 
@@ -198,3 +198,12 @@ export const logoutUser = asyncHandler(async (req, res) => {
     .clearCookie("refreshToken", options)
     .json(new ApiResponse(200, {}, "User logged out successfully"));
 });
+
+
+
+//Get Current User
+export const getCurrentUser =  asyncHandler(async(req, res) => {
+    return res
+    .status(200)
+    .json(new ApiResponse(200, req.user, "current user fetched successfully"))
+})

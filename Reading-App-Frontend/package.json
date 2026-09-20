@@ -16,6 +16,7 @@
     "@reduxjs/toolkit": "^2.12.0",
     "@tailwindcss/vite": "^4.3.3",
     "dotenv": "^18.0.0",
+    "lucide-react": "^1.47.0",
     "material-symbols": "^0.47.4",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
