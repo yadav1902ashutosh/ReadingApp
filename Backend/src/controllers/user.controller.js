@@ -102,6 +102,10 @@ export const registerUser = asyncHandler(async (req, res) => {
       fullName: users.fullName,
       email: users.email,
       username: users.username,
+      role: users.role,
+      avatar: users.avatar,
+      bannerImage: users.bannerImage,
+      bio: users.bio,
       createdAt: users.createdAt,
     });
 

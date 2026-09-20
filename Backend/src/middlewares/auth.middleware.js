@@ -26,6 +26,10 @@ export const verifyJWT = asyncHandler(async (req, _, next) => {
         username: users.username,
         email: users.email,
         fullName: users.fullName,
+        role: users.role,
+        avatar: users.avatar,
+        bannerImage: users.bannerImage,
+        bio: users.bio,
         createdAt: users.createdAt,
       })
       .from(users)
