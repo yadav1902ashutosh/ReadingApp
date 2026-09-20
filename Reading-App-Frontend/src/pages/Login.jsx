@@ -25,12 +25,8 @@ export default function Login() {
       const session = await authService.login(data);
 
       if (session) {
-        const userData = await authService.getCurrentUser();
-
-        if (userData) {
-          dispatch(authLogin({ userData }));
-          navigate("/");
-        }
+        dispatch(authLogin({ userData: session }));
+        navigate("/");
       }
     } catch (err) {
       setError(err?.message || "Login failed. Please check your credentials.");

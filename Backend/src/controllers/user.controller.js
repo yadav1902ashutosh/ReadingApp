@@ -157,9 +157,11 @@ export const loginUser = asyncHandler(async (req, res) => {
   // 4. Strip sensitive data before responding
   const { password: _, refreshToken: __, ...loggedInUser } = user;
 
+  const isProduction = process.env.NODE_ENV === "production";
   const options = {
     httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
+    secure: isProduction,
+    sameSite: isProduction ? "none" : "lax",
   };
 
   return res
@@ -187,9 +189,11 @@ export const logoutUser = asyncHandler(async (req, res) => {
     .set({ refreshToken: null, updatedAt: new Date() })
     .where(eq(users.id, req.user.id));
 
+  const isProduction = process.env.NODE_ENV === "production";
   const options = {
     httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
+    secure: isProduction,
+    sameSite: isProduction ? "none" : "lax",
   };
 
   return res
