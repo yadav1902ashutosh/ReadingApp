@@ -17,13 +17,13 @@ function Header() {
         className="fixed top-0 left-0 right-0 z-50 bg-[#FBF7EE]/95 dark:bg-[#1c1c17]/95 backdrop-blur-md border-b border-[#E2D8B8] dark:border-[#59413e] overflow-visible"
         >
             <div
-            className='h-20 max-w-7xl mx-auto px-3 sm:px-6 lg:px-12 flex items-center justify-between gap-2 sm:gap-4 lg:gap-6 min-w-0'
+            className='h-20 w-full px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-3 sm:gap-4 lg:gap-6 min-w-0'
             >
                 {/* Brand Logo & Title */}
-                <Link to="/" className="flex items-center gap-2.5 sm:gap-4 min-w-0 shrink-0 hover:opacity-90 transition-opacity">
+                <Link to="/" className="flex items-center gap-2.5 sm:gap-3.5 min-w-0 shrink-0 hover:opacity-90 transition-opacity">
                     <img 
                         alt="Antiquarian Foliant Emblem" 
-                        className="h-7 sm:h-8 w-auto object-contain" 
+                        className="h-7 sm:h-8 w-auto object-contain shrink-0" 
                         src={deckleEmblem} 
                     />
                     <div className="flex flex-col min-w-0">
@@ -40,10 +40,10 @@ function Header() {
                 <Navbar activeTab={activeTab} onSelectTab={setActiveTab} />
 
                 {/* Right Actions: Search, Coins, Bookmark, Profile */}
-                <div className="flex items-center gap-1.5 xs:gap-2 sm:gap-3 md:gap-4 ml-auto min-w-0 shrink-0">
+                <div className="flex items-center gap-2 sm:gap-3 md:gap-3.5 ml-auto min-w-0 shrink-0">
                 
                 {/* Desktop Search Input */}
-                <div className="hidden md:flex items-center bg-[#F5EEDB] dark:bg-surface-container-high border border-[#D5C79E] dark:border-outline-variant rounded-full px-2 py-1 gap-1.5 text-on-surface-variant focus-within:border-primary-container shadow-inner min-w-0">
+                <div className="hidden md:flex items-center h-9 bg-[#F5EEDB] dark:bg-surface-container-high border border-[#D5C79E] dark:border-outline-variant rounded-full px-3 gap-2 text-on-surface-variant focus-within:border-primary-container shadow-inner shrink-0">
                     <span className="material-symbols-outlined text-[18px]">search</span>
                     <input 
                     className="bg-transparent border-none outline-none font-body text-body-sm w-28 lg:w-36 text-on-surface placeholder:text-on-surface-variant/60" 
@@ -55,7 +55,7 @@ function Header() {
                 {/* Mobile Search Toggle Button */}
                 <button
                     onClick={() => setIsSearchOpen((prev) => !prev)}
-                    className="flex md:hidden items-center justify-center w-8 h-8 rounded-full bg-surface-container hover:bg-surface-container-high border border-[#E2D8B8] dark:border-outline-variant text-on-surface-variant transition-colors shrink-0"
+                    className="flex md:hidden items-center justify-center w-9 h-9 rounded-full bg-surface-container hover:bg-surface-container-high border border-[#E2D8B8] dark:border-outline-variant text-on-surface-variant transition-colors shrink-0"
                     aria-label="Search Library"
                     title="Search Folios"
                 >
@@ -66,18 +66,18 @@ function Header() {
 
                 {/* Florins Counter (Only visible when logged in on Tablet/Desktop) */}
                 {authStatus && (
-                    <div className="hidden sm:flex items-center bg-surface-container-low dark:bg-surface-container-high border border-[#E2D8B8] dark:border-outline-variant rounded-full pl-2 pr-1 py-0.5 sm:py-1 gap-1.5 sm:gap-2 shrink-0">
+                    <div className="hidden sm:flex items-center h-9 bg-surface-container-low dark:bg-surface-container-high border border-[#E2D8B8] dark:border-outline-variant rounded-full pl-2.5 pr-1 gap-2 shrink-0">
                         <div className="flex items-center gap-1 font-label text-label-md text-tertiary dark:text-tertiary-fixed-dim font-medium">
                         <span className="text-xs shrink-0">🪙</span>
                         <span className="font-semibold text-xs sm:text-label-md">140</span>
                         <span className="hidden lg:inline text-[11px] text-tertiary/80 dark:text-tertiary-fixed-dim/80">Florins</span>
                         </div>
                         <button 
-                        className="bg-primary-container hover:bg-primary text-on-primary font-label text-xs sm:text-label-sm px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full transition-colors flex items-center gap-0.5 shadow-sm shrink-0"
+                        className="bg-primary-container hover:bg-primary text-on-primary font-label text-xs px-2.5 py-1 rounded-full transition-colors flex items-center gap-0.5 shadow-sm shrink-0"
                         title="Acquire Coin Pouch (Top Up Florins)"
                         >
                         <span>+</span>
-                        <span className="hidden xs:inline">Top Up</span>
+                        <span>Top Up</span>
                         </button>
                     </div>
                 )}
@@ -88,10 +88,10 @@ function Header() {
                 {/* Bookmark Badge */}
                 <Link 
                     to={authStatus ? "/profile" : "/login"}
-                    className="relative flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-surface-container hover:bg-surface-container-high border border-[#E2D8B8] dark:border-outline-variant cursor-pointer text-on-surface-variant transition-colors shrink-0"
+                    className="relative flex items-center justify-center w-9 h-9 rounded-full bg-surface-container hover:bg-surface-container-high border border-[#E2D8B8] dark:border-outline-variant cursor-pointer text-on-surface-variant transition-colors shrink-0"
                     title="Inscribed Folios & Bookmarks"
                 >
-                    <span className="material-symbols-outlined text-[18px] sm:text-[20px]">bookmark_added</span>
+                    <span className="material-symbols-outlined text-[19px]">bookmark_added</span>
                     <span className="absolute -top-0.5 -right-0.5 w-2 h-2.5 bg-primary-container rounded-sm shadow-sm"></span>
                 </Link>
 

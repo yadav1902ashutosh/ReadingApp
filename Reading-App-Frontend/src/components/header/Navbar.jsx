@@ -15,7 +15,7 @@ function Navbar({ activeTab = 'The Stacks', onSelectTab }) {
 
     return (
         <nav
-            className='hidden xl:flex items-center gap-1 bg-surface-container-low/70 dark:bg-surface-container-high/30 p-1 rounded-xl border border-[#E2D8B8]/60 dark:border-[#59413e]/60'
+            className='hidden xl:flex items-center gap-0.5 2xl:gap-1 bg-surface-container-low/70 dark:bg-surface-container-high/30 p-1 rounded-xl border border-[#E2D8B8]/60 dark:border-[#59413e]/60 shrink-0'
         >
             {
                 navItems.map((item) => {
@@ -31,7 +31,7 @@ function Navbar({ activeTab = 'The Stacks', onSelectTab }) {
                             onClick={() => {
                                 if (onSelectTab) onSelectTab(item.label);
                             }}
-                            className={`px-3 py-1.5 rounded-lg transition-colors font-label text-label-md 
+                            className={`px-2.5 py-1 2xl:px-3 2xl:py-1.5 rounded-lg transition-colors font-label text-xs 2xl:text-label-md whitespace-nowrap
                                 ${isActive ? 'bg-surface-container-high dark:bg-surface-container text-primary dark:text-primary-fixed font-bold shadow-inner' : 'text-on-surface-variant hover:text-on-surface hover:bg-surface-container/50 dark:hover:bg-surface-container-high/50'}`}
                         >
                             {item.label}
