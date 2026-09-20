@@ -6,25 +6,27 @@ import deckleEmblem from '../../assets/deckle-emblem.png'
 
 function Header() {
     const [activeTab, setActiveTab] = useState("The Stacks")
+    const [isSearchOpen, setIsSearchOpen] = useState(false)
+
     return (
         <header 
         className="fixed top-0 left-0 right-0 z-50 bg-[#FBF7EE]/95 dark:bg-[#1c1c17]/95 backdrop-blur-md border-b border-[#E2D8B8] dark:border-[#59413e] overflow-visible"
         >
             <div
-            className='h-20 max-w-7xl mx-auto px-5 lg:px-12 flex items-center justify-between gap-3 sm:gap-4 lg:gap-6 min-w-0'
+            className='h-20 max-w-7xl mx-auto px-3 sm:px-6 lg:px-12 flex items-center justify-between gap-2 sm:gap-4 lg:gap-6 min-w-0'
             >
                 {/* Brand Logo & Title */}
-                <div className="flex items-center gap-4 min-w-0 shrink-0">
+                <div className="flex items-center gap-2.5 sm:gap-4 min-w-0 shrink-0">
                     <img 
                         alt="Antiquarian Foliant Emblem" 
-                        className="h-8 w-auto object-contain" 
+                        className="h-7 sm:h-8 w-auto object-contain" 
                         src={deckleEmblem} 
                     />
-                    <div className="flex flex-col">
-                        <span className="font-headline font-bold text-headline-sm text-primary dark:text-primary-fixed tracking-tight">
+                    <div className="flex flex-col min-w-0">
+                        <span className="font-headline font-bold text-lg sm:text-headline-sm text-primary dark:text-primary-fixed tracking-tight leading-none sm:leading-normal">
                         Deckle
                         </span>
-                        <span className="font-label text-label-sm text-on-surface-variant uppercase tracking-widest text-[9px] -mt-1">
+                        <span className="hidden md:block font-label text-label-sm text-on-surface-variant uppercase tracking-widest text-[9px] -mt-0.5 sm:-mt-1">
                         Serial Library &amp; Scriptorium
                         </span>
                     </div>
@@ -34,9 +36,9 @@ function Header() {
                 <Navbar activeTab={activeTab} onSelectTab={setActiveTab} />
 
                 {/* Right Actions: Search, Coins, Bookmark, Profile */}
-                <div className="flex items-center gap-2 sm:gap-4 ml-auto min-w-0 shrink-0">
+                <div className="flex items-center gap-1.5 xs:gap-2 sm:gap-3 md:gap-4 ml-auto min-w-0 shrink-0">
                 
-                {/* Search Bar */}
+                {/* Desktop Search Input */}
                 <div className="hidden md:flex items-center bg-[#F5EEDB] dark:bg-surface-container-high border border-[#D5C79E] dark:border-outline-variant rounded-full px-2 py-1 gap-1.5 text-on-surface-variant focus-within:border-primary-container shadow-inner min-w-0">
                     <span className="material-symbols-outlined text-[18px]">search</span>
                     <input 
@@ -46,27 +48,62 @@ function Header() {
                     />
                 </div>
 
-                {/* Florins Counter */}
-                <div className="flex items-center bg-surface-container-low dark:bg-surface-container-high border border-[#E2D8B8] dark:border-outline-variant rounded-full pl-2 pr-1 py-1 gap-2 max-w-full min-w-0">
-                    <div className="flex items-center gap-1 font-label text-label-md text-tertiary dark:text-tertiary-fixed-dim font-medium min-w-0">
+                {/* Mobile Search Toggle Button */}
+                <button
+                    onClick={() => setIsSearchOpen((prev) => !prev)}
+                    className="flex md:hidden items-center justify-center w-8 h-8 rounded-full bg-surface-container hover:bg-surface-container-high border border-[#E2D8B8] dark:border-outline-variant text-on-surface-variant transition-colors shrink-0"
+                    aria-label="Search Library"
+                    title="Search Folios"
+                >
+                    <span className="material-symbols-outlined text-[18px]">
+                        {isSearchOpen ? "close" : "search"}
+                    </span>
+                </button>
+
+                {/* Florins Counter (Visible on Tablet/Desktop, accessed via Profile Menu on Mobile) */}
+                <div className="hidden sm:flex items-center bg-surface-container-low dark:bg-surface-container-high border border-[#E2D8B8] dark:border-outline-variant rounded-full pl-2 pr-1 py-0.5 sm:py-1 gap-1.5 sm:gap-2 shrink-0">
+                    <div className="flex items-center gap-1 font-label text-label-md text-tertiary dark:text-tertiary-fixed-dim font-medium">
                     <span className="text-xs shrink-0">🪙</span>
-                    <span className="hidden sm:inline font-semibold truncate">140 </span>
+                    <span className="font-semibold text-xs sm:text-label-md">140</span>
+                    <span className="hidden lg:inline text-[11px] text-tertiary/80 dark:text-tertiary-fixed-dim/80">Florins</span>
                     </div>
-                    <button className="bg-primary-container hover:bg-primary text-on-primary font-label text-label-sm px-2.5 py-1 rounded-full transition-colors flex items-center gap-0.5 shadow-sm shrink-0">
-                    + Top Up
+                    <button 
+                    className="bg-primary-container hover:bg-primary text-on-primary font-label text-xs sm:text-label-sm px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full transition-colors flex items-center gap-0.5 shadow-sm shrink-0"
+                    title="Acquire Coin Pouch (Top Up Florins)"
+                    >
+                    <span>+</span>
+                    <span className="hidden xs:inline">Top Up</span>
                     </button>
                 </div>
 
                 {/* Bookmark Badge */}
-                <div className="relative flex items-center justify-center w-8 h-8 rounded-full bg-surface-container hover:bg-surface-container-high border border-[#E2D8B8] dark:border-outline-variant cursor-pointer text-on-surface-variant shrink-0">
-                    <span className="material-symbols-outlined text-[20px]">bookmark_added</span>
-                    <span className="absolute -top-1 -right-0.5 w-2 h-2.5 bg-primary-container rounded-sm shadow-sm"></span>
+                <div 
+                    className="relative flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-surface-container hover:bg-surface-container-high border border-[#E2D8B8] dark:border-outline-variant cursor-pointer text-on-surface-variant transition-colors shrink-0"
+                    title="Inscribed Folios & Bookmarks"
+                >
+                    <span className="material-symbols-outlined text-[18px] sm:text-[20px]">bookmark_added</span>
+                    <span className="absolute -top-0.5 -right-0.5 w-2 h-2.5 bg-primary-container rounded-sm shadow-sm"></span>
                 </div>
 
                 {/* User Profile Menu */}
                 <ProfileMenu />
           </div>
-        </div>        
+        </div>
+
+        {/* Expandable Mobile Search Tray */}
+        {isSearchOpen && (
+            <div className="md:hidden px-3 py-2 bg-[#F5EEDB]/95 dark:bg-surface-container/95 border-t border-[#E2D8B8] dark:border-outline-variant shadow-inner transition-all">
+                <div className="flex items-center bg-surface dark:bg-surface-container-high border border-[#D5C79E] dark:border-outline-variant rounded-full px-3 py-1.5 gap-2 text-on-surface-variant focus-within:border-primary-container shadow-inner">
+                    <span className="material-symbols-outlined text-[18px] text-primary">search</span>
+                    <input 
+                        autoFocus
+                        className="bg-transparent border-none outline-none font-body text-body-sm w-full text-on-surface placeholder:text-on-surface-variant/60" 
+                        placeholder="Search by folio title, author, or tags..." 
+                        type="text" 
+                    />
+                </div>
+            </div>
+        )}
         </header>
     )
 }

@@ -110,9 +110,9 @@ export default function ProfileMenu() {
 
       {/* Dropdown Panel */}
       {isOpen && (
-        <div className="absolute right-0 top-full mt-2 w-80 bg-[#fdf9f0] dark:bg-surface-container rounded-xl border border-[#E2D8B8] dark:border-outline-variant shadow-2xl z-50 overflow-hidden">
+        <div className="absolute right-0 top-full mt-2 w-[calc(100vw-1.5rem)] sm:w-80 max-w-[20rem] sm:max-w-none bg-[#fdf9f0] dark:bg-surface-container rounded-xl border border-[#E2D8B8] dark:border-outline-variant shadow-2xl z-50 overflow-hidden max-h-[calc(100dvh-5.5rem)] overflow-y-auto">
           {/* Decorative Gold-to-Primary Gradient Top Bar */}
-          <div className="h-1 w-full bg-gradient-to-r from-[#D5C79E] via-primary to-[#D5C79E]" />
+          <div className="h-1 w-full bg-gradient-to-r from-[#D5C79E] via-primary to-[#D5C79E] sticky top-0 z-10" />
 
           {/* Profile Identity Section */}
           <div
@@ -131,14 +131,14 @@ export default function ProfileMenu() {
               </div>
               <div className="flex flex-col min-w-0 flex-1">
                 <div className="flex items-center gap-1.5 flex-wrap">
-                  <span className="font-headline-sm text-[16px] text-on-surface font-bold truncate group-hover:text-primary transition-colors">
+                  <span className="font-headline-sm text-[15px] sm:text-[16px] text-on-surface font-bold truncate group-hover:text-primary transition-colors max-w-[140px] sm:max-w-[170px]">
                     {displayName}
                   </span>
-                  <span className="px-1.5 py-0.5 rounded bg-primary-fixed text-primary font-label-sm text-[10px] font-bold uppercase tracking-wider">
+                  <span className="px-1.5 py-0.5 rounded bg-primary-fixed text-primary font-label-sm text-[10px] font-bold uppercase tracking-wider shrink-0">
                     Tier IV
                   </span>
                 </div>
-                <span className="font-body-sm text-[12px] text-on-surface-variant truncate">
+                <span className="font-body-sm text-[12px] text-on-surface-variant truncate block max-w-full">
                   {email}
                 </span>
                 <span className="font-label-sm text-[11px] text-primary font-semibold mt-1 group-hover:underline flex items-center gap-0.5">
