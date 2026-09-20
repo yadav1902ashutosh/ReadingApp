@@ -4,6 +4,16 @@ export class AuthService {
     // Base URL loaded from env / config
     baseUrl = config.apiUrl || import.meta.env.VITE_API_BASE_URL;
 
+    // Helper to get Authorization headers for mobile/cross-domain reliability
+    getAuthHeaders(customHeaders = {}) {
+        const token = localStorage.getItem("accessToken");
+        const headers = { ...customHeaders };
+        if (token) {
+            headers["Authorization"] = `Bearer ${token}`;
+        }
+        return headers;
+    }
+
     async createAccount({ fullName, email, username, password }) {
         try {
             const response = await fetch(`${this.baseUrl}/user/register`, {
@@ -46,6 +56,11 @@ export class AuthService {
                 throw new Error(data.message || "Invalid credentials");
             }
 
+            // Save token to localStorage for Android Chrome & cross-domain support
+            if (data.data?.accessToken) {
+                localStorage.setItem("accessToken", data.data.accessToken);
+            }
+
             return data.data.user;
         } catch (error) {
             console.error("AuthService :: login :: error", error);
@@ -55,12 +70,19 @@ export class AuthService {
 
     async getCurrentUser() {
         try {
+            const headers = this.getAuthHeaders();
             const response = await fetch(`${this.baseUrl}/user/current-user`, {
                 method: "GET",
+                headers,
                 credentials: "include",
             });
 
-            if (!response.ok) return null;
+            if (!response.ok) {
+                if (response.status === 401) {
+                    localStorage.removeItem("accessToken");
+                }
+                return null;
+            }
 
             const data = await response.json();
             return data.data;
@@ -72,10 +94,14 @@ export class AuthService {
 
     async logout() {
         try {
+            const headers = this.getAuthHeaders();
             const response = await fetch(`${this.baseUrl}/user/logout`, {
                 method: "POST",
+                headers,
                 credentials: "include",
             });
+
+            localStorage.removeItem("accessToken");
 
             if (!response.ok) {
                 const data = await response.json();
@@ -85,6 +111,7 @@ export class AuthService {
             return true;
         } catch (error) {
             console.error("AuthService :: logout :: error", error);
+            localStorage.removeItem("accessToken");
             throw error;
         }
     }
