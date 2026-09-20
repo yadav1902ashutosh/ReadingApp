@@ -19,7 +19,7 @@ function Header() {
             className='h-20 max-w-7xl mx-auto px-3 sm:px-6 lg:px-12 flex items-center justify-between gap-2 sm:gap-4 lg:gap-6 min-w-0'
             >
                 {/* Brand Logo & Title */}
-                <div className="flex items-center gap-2.5 sm:gap-4 min-w-0 shrink-0">
+                <Link to="/" className="flex items-center gap-2.5 sm:gap-4 min-w-0 shrink-0 hover:opacity-90 transition-opacity">
                     <img 
                         alt="Antiquarian Foliant Emblem" 
                         className="h-7 sm:h-8 w-auto object-contain" 
@@ -33,7 +33,7 @@ function Header() {
                         Serial Library &amp; Scriptorium
                         </span>
                     </div>
-                </div>
+                </Link>
 
                 {/* Embedded Modular Navbar */}
                 <Navbar activeTab={activeTab} onSelectTab={setActiveTab} />
@@ -64,7 +64,7 @@ function Header() {
                 </button>
 
                 {/* Florins Counter (Only visible when logged in on Tablet/Desktop) */}
-                {authStatus ? (
+                {authStatus && (
                     <div className="hidden sm:flex items-center bg-surface-container-low dark:bg-surface-container-high border border-[#E2D8B8] dark:border-outline-variant rounded-full pl-2 pr-1 py-0.5 sm:py-1 gap-1.5 sm:gap-2 shrink-0">
                         <div className="flex items-center gap-1 font-label text-label-md text-tertiary dark:text-tertiary-fixed-dim font-medium">
                         <span className="text-xs shrink-0">🪙</span>
@@ -79,14 +79,6 @@ function Header() {
                         <span className="hidden xs:inline">Top Up</span>
                         </button>
                     </div>
-                ) : (
-                    <Link
-                        to="/login"
-                        className="hidden sm:inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-primary hover:bg-primary-container text-on-primary font-label text-xs font-semibold uppercase tracking-wider transition-colors shadow-sm shrink-0"
-                    >
-                        <span className="material-symbols-outlined text-sm">login</span>
-                        <span>Log In</span>
-                    </Link>
                 )}
 
                 {/* Bookmark Badge */}
