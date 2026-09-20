@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import Navbar from './Navbar'
 import ProfileMenu from './ProfileMenu'
+import ThemeToggle from './ThemeToggle'
 import deckleEmblem from '../../assets/deckle-emblem.png'
 
 
@@ -80,6 +81,9 @@ function Header() {
                         </button>
                     </div>
                 )}
+
+                {/* Theme Switcher Button */}
+                <ThemeToggle />
 
                 {/* Bookmark Badge */}
                 <Link 

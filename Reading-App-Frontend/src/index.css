@@ -4,6 +4,41 @@
 /* Enable class-based dark mode */
 @custom-variant dark (&:where(.dark, .dark *));
 
+:root {
+  color-scheme: light;
+}
+
+.dark {
+  color-scheme: dark;
+  --color-surface: #141310;
+  --color-surface-dim: #100f0c;
+  --color-surface-bright: #252420;
+  --color-surface-container-lowest: #0c0b09;
+  --color-surface-container-low: #1a1915;
+  --color-surface-container: #201f1b;
+  --color-surface-container-high: #2b2924;
+  --color-surface-container-highest: #36342e;
+  --color-surface-variant: #36342e;
+  
+  --color-on-surface: #e6e2d9;
+  --color-on-surface-variant: #d5c79e;
+  
+  --color-primary: #ffb4ac;
+  --color-primary-container: #760009;
+  --color-primary-fixed: #ffdad6;
+  --color-primary-fixed-dim: #ffb4ac;
+  
+  --color-secondary: #ffb594;
+  --color-secondary-container: #7a3500;
+  --color-secondary-fixed: #ffdbca;
+
+  --color-tertiary: #ffb77c;
+  --color-tertiary-container: #793f00;
+
+  --color-outline: #a08d87;
+  --color-outline-variant: #534340;
+}
+
 @theme {
   /* Custom Color Tokens */
   --color-surface: #fdf9f0;
