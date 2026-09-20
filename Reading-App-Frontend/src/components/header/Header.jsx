@@ -1,4 +1,6 @@
 import react,{useState}  from 'react'
+import { useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 import Navbar from './Navbar'
 import ProfileMenu from './ProfileMenu'
 import deckleEmblem from '../../assets/deckle-emblem.png'
@@ -7,6 +9,7 @@ import deckleEmblem from '../../assets/deckle-emblem.png'
 function Header() {
     const [activeTab, setActiveTab] = useState("The Stacks")
     const [isSearchOpen, setIsSearchOpen] = useState(false)
+    const authStatus = useSelector((state) => state.auth.status)
 
     return (
         <header 
@@ -60,21 +63,31 @@ function Header() {
                     </span>
                 </button>
 
-                {/* Florins Counter (Visible on Tablet/Desktop, accessed via Profile Menu on Mobile) */}
-                <div className="hidden sm:flex items-center bg-surface-container-low dark:bg-surface-container-high border border-[#E2D8B8] dark:border-outline-variant rounded-full pl-2 pr-1 py-0.5 sm:py-1 gap-1.5 sm:gap-2 shrink-0">
-                    <div className="flex items-center gap-1 font-label text-label-md text-tertiary dark:text-tertiary-fixed-dim font-medium">
-                    <span className="text-xs shrink-0">🪙</span>
-                    <span className="font-semibold text-xs sm:text-label-md">140</span>
-                    <span className="hidden lg:inline text-[11px] text-tertiary/80 dark:text-tertiary-fixed-dim/80">Florins</span>
+                {/* Florins Counter (Only visible when logged in on Tablet/Desktop) */}
+                {authStatus ? (
+                    <div className="hidden sm:flex items-center bg-surface-container-low dark:bg-surface-container-high border border-[#E2D8B8] dark:border-outline-variant rounded-full pl-2 pr-1 py-0.5 sm:py-1 gap-1.5 sm:gap-2 shrink-0">
+                        <div className="flex items-center gap-1 font-label text-label-md text-tertiary dark:text-tertiary-fixed-dim font-medium">
+                        <span className="text-xs shrink-0">🪙</span>
+                        <span className="font-semibold text-xs sm:text-label-md">140</span>
+                        <span className="hidden lg:inline text-[11px] text-tertiary/80 dark:text-tertiary-fixed-dim/80">Florins</span>
+                        </div>
+                        <button 
+                        className="bg-primary-container hover:bg-primary text-on-primary font-label text-xs sm:text-label-sm px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full transition-colors flex items-center gap-0.5 shadow-sm shrink-0"
+                        title="Acquire Coin Pouch (Top Up Florins)"
+                        >
+                        <span>+</span>
+                        <span className="hidden xs:inline">Top Up</span>
+                        </button>
                     </div>
-                    <button 
-                    className="bg-primary-container hover:bg-primary text-on-primary font-label text-xs sm:text-label-sm px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full transition-colors flex items-center gap-0.5 shadow-sm shrink-0"
-                    title="Acquire Coin Pouch (Top Up Florins)"
+                ) : (
+                    <Link
+                        to="/login"
+                        className="hidden sm:inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-primary hover:bg-primary-container text-on-primary font-label text-xs font-semibold uppercase tracking-wider transition-colors shadow-sm shrink-0"
                     >
-                    <span>+</span>
-                    <span className="hidden xs:inline">Top Up</span>
-                    </button>
-                </div>
+                        <span className="material-symbols-outlined text-sm">login</span>
+                        <span>Log In</span>
+                    </Link>
+                )}
 
                 {/* Bookmark Badge */}
                 <div 
