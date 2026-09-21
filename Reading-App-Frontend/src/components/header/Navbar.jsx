@@ -1,16 +1,16 @@
 import React from 'react'
 import { Link, useLocation } from 'react-router-dom'
 
-function Navbar({ activeTab = 'The Stacks', onSelectTab }) {
+function Navbar({ activeTab = 'Home', onSelectTab }) {
     const location = useLocation();
 
     const navItems = [
-        { id: 'stacks', label: 'The Stacks', to: '/home' },
-        { id: 'archives', label: 'Grand Archives', to: '/home' },
-        { id: 'genres', label: 'Literary Genres', to: '/home' },
-        { id: 'study', label: 'Personal Study', to: '/profile' },
-        { id: 'journal', label: 'Scriptorium Journal', to: '/home' },
-        { id: 'saloon', label: 'Reading Saloon', to: '/home' },
+        { id: 'home', label: 'Home', to: '/home' },
+        { id: 'browse', label: 'Browse', to: '/home' },
+        { id: 'genres', label: 'Genres', to: '/home' },
+        { id: 'library', label: 'My Library', to: '/profile' },
+        { id: 'updates', label: 'Latest Updates', to: '/home' },
+        { id: 'community', label: 'Community', to: '/home' },
     ];
 
     return (

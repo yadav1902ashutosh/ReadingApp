@@ -8,7 +8,7 @@ import deckleEmblem from '../../assets/deckle-emblem.png'
 
 
 function Header() {
-    const [activeTab, setActiveTab] = useState("The Stacks")
+    const [activeTab, setActiveTab] = useState("Home")
     const [isSearchOpen, setIsSearchOpen] = useState(false)
     const authStatus = useSelector((state) => state.auth.status)
 
@@ -22,7 +22,7 @@ function Header() {
                 {/* Brand Logo & Title */}
                 <Link to="/" className="flex items-center gap-2.5 sm:gap-3.5 min-w-0 shrink-0 hover:opacity-90 transition-opacity">
                     <img 
-                        alt="Antiquarian Foliant Emblem" 
+                        alt="Deckle Logo" 
                         className="h-7 sm:h-8 w-auto object-contain shrink-0" 
                         src={deckleEmblem} 
                     />
@@ -31,7 +31,7 @@ function Header() {
                         Deckle
                         </span>
                         <span className="hidden md:block font-label text-label-sm text-on-surface-variant uppercase tracking-widest text-[9px] -mt-0.5 sm:-mt-1">
-                        Serial Library &amp; Scriptorium
+                        Web Novels &amp; Stories
                         </span>
                     </div>
                 </Link>
@@ -47,7 +47,7 @@ function Header() {
                     <span className="material-symbols-outlined text-[18px]">search</span>
                     <input 
                     className="bg-transparent border-none outline-none font-body text-body-sm w-28 lg:w-36 text-on-surface placeholder:text-on-surface-variant/60" 
-                    placeholder="Search folios, scribes..." 
+                    placeholder="Search stories, authors..." 
                     type="text" 
                     />
                 </div>
@@ -56,25 +56,25 @@ function Header() {
                 <button
                     onClick={() => setIsSearchOpen((prev) => !prev)}
                     className="flex md:hidden items-center justify-center w-9 h-9 rounded-full bg-surface-container hover:bg-surface-container-high border border-[#E2D8B8] dark:border-outline-variant text-on-surface-variant transition-colors shrink-0"
-                    aria-label="Search Library"
-                    title="Search Folios"
+                    aria-label="Search stories"
+                    title="Search Stories"
                 >
                     <span className="material-symbols-outlined text-[18px]">
                         {isSearchOpen ? "close" : "search"}
                     </span>
                 </button>
 
-                {/* Florins Counter (Only visible when logged in on Tablet/Desktop) */}
+                {/* Coins Counter (Only visible when logged in on Tablet/Desktop) */}
                 {authStatus && (
                     <div className="hidden sm:flex items-center h-9 bg-surface-container-low dark:bg-surface-container-high border border-[#E2D8B8] dark:border-outline-variant rounded-full pl-2.5 pr-1 gap-2 shrink-0">
                         <div className="flex items-center gap-1 font-label text-label-md text-tertiary dark:text-tertiary-fixed-dim font-medium">
                         <span className="text-xs shrink-0">🪙</span>
                         <span className="font-semibold text-xs sm:text-label-md">140</span>
-                        <span className="hidden lg:inline text-[11px] text-tertiary/80 dark:text-tertiary-fixed-dim/80">Florins</span>
+                        <span className="hidden lg:inline text-[11px] text-tertiary/80 dark:text-tertiary-fixed-dim/80">Coins</span>
                         </div>
                         <button 
                         className="bg-primary-container hover:bg-primary text-on-primary font-label text-xs px-2.5 py-1 rounded-full transition-colors flex items-center gap-0.5 shadow-sm shrink-0"
-                        title="Acquire Coin Pouch (Top Up Florins)"
+                        title="Top Up Coins"
                         >
                         <span>+</span>
                         <span>Top Up</span>
@@ -89,7 +89,7 @@ function Header() {
                 <Link 
                     to={authStatus ? "/profile" : "/login"}
                     className="relative flex items-center justify-center w-9 h-9 rounded-full bg-surface-container hover:bg-surface-container-high border border-[#E2D8B8] dark:border-outline-variant cursor-pointer text-on-surface-variant transition-colors shrink-0"
-                    title="Inscribed Folios & Bookmarks"
+                    title="Bookmarks & Reading List"
                 >
                     <span className="material-symbols-outlined text-[19px]">bookmark_added</span>
                     <span className="absolute -top-0.5 -right-0.5 w-2 h-2.5 bg-primary-container rounded-sm shadow-sm"></span>
@@ -108,7 +108,7 @@ function Header() {
                     <input 
                         autoFocus
                         className="bg-transparent border-none outline-none font-body text-body-sm w-full text-on-surface placeholder:text-on-surface-variant/60" 
-                        placeholder="Search by folio title, author, or tags..." 
+                        placeholder="Search stories, authors, or tags..." 
                         type="text" 
                     />
                 </div>

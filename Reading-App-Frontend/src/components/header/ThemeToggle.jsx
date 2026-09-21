@@ -39,21 +39,21 @@ export default function ThemeToggle() {
   const options = [
     {
       id: "light",
-      label: "Daylight Scriptorium",
+      label: "Light Theme",
       shortLabel: "Light",
       icon: "light_mode",
       iconColor: "text-amber-700 dark:text-amber-400",
     },
     {
       id: "dark",
-      label: "Nocturnal Study",
+      label: "Dark Theme",
       shortLabel: "Dark",
       icon: "dark_mode",
       iconColor: "text-indigo-700 dark:text-indigo-400",
     },
     {
       id: "system",
-      label: "System Vigil",
+      label: "System Default",
       shortLabel: "System",
       icon: "brightness_auto",
       iconColor: "text-secondary dark:text-secondary-fixed",
@@ -77,7 +77,7 @@ export default function ThemeToggle() {
         aria-expanded={isOpen}
         aria-haspopup="true"
         aria-label={`Change UI theme, currently set to ${activeOption.label}`}
-        title={`Scriptorium Theme: ${activeOption.label}`}
+        title={`Theme: ${activeOption.label}`}
         className="relative flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-surface-container hover:bg-surface-container-high border border-[#E2D8B8] dark:border-outline-variant cursor-pointer text-on-surface-variant hover:text-primary transition-all shrink-0 focus-visible:ring-2 focus-visible:ring-primary/60 outline-none shadow-sm"
       >
         <span
@@ -95,7 +95,7 @@ export default function ThemeToggle() {
           aria-orientation="vertical"
         >
           <div className="px-3 py-1 text-[10px] font-label font-bold uppercase tracking-wider text-outline border-b border-[#E2D8B8]/60 dark:border-outline-variant/40 mb-1">
-            Scriptorium Ambiance
+            Display Theme
           </div>
 
           {options.map((opt) => {

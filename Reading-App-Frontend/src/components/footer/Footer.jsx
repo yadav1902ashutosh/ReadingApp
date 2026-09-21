@@ -4,16 +4,16 @@ export default function Footer()
 {
     const categories = [
     {
-      title: "The Stacks",
-      links: ["Grand Archives", "Literary Genres", "Serial Serials", "Illustrated Manuscripts"]
+      title: "Explore",
+      links: ["Browse All Stories", "Genres", "Top Ranked", "Completed Novels"]
     },
     {
-      title: "Scriptorium",
-      links: ["Personal Study", "Journal Entry", "Margin Notes", "Publishing Guild"]
+      title: "Library",
+      links: ["My Bookmarks", "Reading History", "Reading Lists", "Author Dashboard"]
     },
     {
       title: "Community",
-      links: ["Reading Saloon", "Collector's Den", "Florins Exchange", "Discord Guild"]
+      links: ["Discussions", "Community Discord", "Coins & Store", "Help & FAQ"]
     }
   ];
 
@@ -30,12 +30,12 @@ export default function Footer()
                 Deckle
               </span>
               <span className="font-label text-label-sm text-on-surface-variant uppercase tracking-widest text-[10px] border-l border-[#E2D8B8] pl-3">
-                Serial Library &amp; Scriptorium
+                Web Novels &amp; Stories
               </span>
             </div>
             
             <p className="font-body text-body-md text-on-surface-variant leading-relaxed max-w-md">
-              A digital sanctuary for web novels, serial fiction, and illuminated manuscripts. Designed for deep reading, study, and scribal expression.
+              A modern digital library for web novels, serial fiction, and fanfiction. Designed for comfortable reading and community discussion.
             </p>
           </div>
 

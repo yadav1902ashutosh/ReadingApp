@@ -27,25 +27,25 @@ export default function Home() {
         <div className="max-w-2xl">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 dark:bg-primary-fixed/20 text-primary dark:text-primary-fixed font-label text-xs font-semibold tracking-wide uppercase mb-3">
             <span className="material-symbols-outlined text-sm">auto_stories</span>
-            The Antiquarian Stacks
+            Featured Library
           </div>
           <h1 className="font-headline font-bold text-2xl sm:text-4xl text-on-surface tracking-tight leading-tight">
-            Boundless serial folios, chronicled for deep reading.
+            Discover endless web novels, fanfiction, and stories.
           </h1>
           <p className="font-body text-sm sm:text-base text-on-surface-variant mt-3 leading-relaxed">
-            Discover web fiction, translations, and illuminated manuscripts inscribed by master scribes. Pick up where your vigil paused or begin an unread chronicle.
+            Read popular web fiction, original novels, and fanfiction. Bookmark your favorite stories, track your reading progress, and enjoy clean reading.
           </p>
 
           {/* Quick Stats Banner */}
           <div className="flex flex-wrap items-center gap-4 sm:gap-8 mt-6 pt-4 border-t border-[#E2D8B8]/80 dark:border-outline-variant/60 font-label text-xs sm:text-sm text-on-surface-variant">
             <div className="flex items-center gap-1.5">
-              <span className="font-bold text-on-surface">1,420+</span> Folios Preserved
+              <span className="font-bold text-on-surface">1,420+</span> Stories Available
             </div>
             <div className="flex items-center gap-1.5">
-              <span className="font-bold text-on-surface">38.4k</span> Active Scribes
+              <span className="font-bold text-on-surface">38.4k</span> Active Readers
             </div>
             <div className="flex items-center gap-1.5">
-              <span className="font-bold text-on-surface">Hourly</span> Scriptorium Updates
+              <span className="font-bold text-on-surface">Hourly</span> Chapter Updates
             </div>
           </div>
         </div>
@@ -73,18 +73,18 @@ export default function Home() {
 
       {/* --- MAIN CONTENT 2-COLUMN LAYOUT --- */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-        {/* Left Column: Featured & Popular Folio Grid (8 cols on large) */}
+        {/* Left Column: Featured & Popular Stories Grid (8 cols on large) */}
         <div className="lg:col-span-8 space-y-10">
           <div>
             <div className="flex items-center justify-between mb-5">
               <div className="flex items-center gap-2">
                 <span className="material-symbols-outlined text-primary text-xl">menu_book</span>
                 <h2 className="font-headline font-bold text-xl sm:text-2xl text-on-surface">
-                  Curated Folios
+                  Popular Stories
                 </h2>
               </div>
               <span className="font-label text-xs text-on-surface-variant font-medium">
-                Showing {filteredBooks.length} titles
+                Showing {filteredBooks.length} stories
               </span>
             </div>
 
@@ -163,16 +163,16 @@ export default function Home() {
             </div>
           </div>
 
-          {/* --- RECENT SERIAL CHAPTER UPDATES TABLE --- */}
+          {/* --- RECENT CHAPTER UPDATES TABLE --- */}
           <div className="bg-[#FDFBF7] dark:bg-surface-container rounded-xl border border-[#E2D8B8] dark:border-outline-variant p-5">
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-2">
                 <span className="material-symbols-outlined text-secondary text-xl">history_edu</span>
                 <h3 className="font-headline font-bold text-lg text-on-surface">
-                  Recent Folio Dispatches
+                  Latest Chapter Updates
                 </h3>
               </div>
-              <span className="font-label text-xs text-on-surface-variant">Live from Scriptorium</span>
+              <span className="font-label text-xs text-on-surface-variant">Live updates</span>
             </div>
 
             <div className="divide-y divide-[#E2D8B8]/60 dark:divide-outline-variant/60">
@@ -203,14 +203,14 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Right Column: Scriptorium Rankings & Quick Reads (4 cols on large) */}
+        {/* Right Column: Top Rankings & Quick Rewards (4 cols on large) */}
         <div className="lg:col-span-4 space-y-6">
           {/* Top Rankings Card */}
           <div className="bg-[#FDFBF7] dark:bg-surface-container rounded-xl border border-[#E2D8B8] dark:border-outline-variant p-5">
             <div className="flex items-center gap-2 mb-4 pb-3 border-b border-[#E2D8B8]/60 dark:border-outline-variant/60">
               <span className="material-symbols-outlined text-amber-600 text-xl">workspace_premium</span>
               <h3 className="font-headline font-bold text-lg text-on-surface">
-                Imperial Reading Vigil
+                Top Rankings
               </h3>
             </div>
 
@@ -238,7 +238,7 @@ export default function Home() {
                       {item.title}
                     </h4>
                     <span className="font-label text-xs text-on-surface-variant">
-                      {item.readers} readers in vigil
+                      {item.readers} readers
                     </span>
                   </div>
                   <span className="material-symbols-outlined text-sm text-emerald-600">
@@ -249,19 +249,19 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Scriptorium Notice Board */}
+          {/* Reading Rewards Card */}
           <div className="bg-surface-container-low dark:bg-surface-container rounded-xl border border-[#E2D8B8] dark:border-outline-variant p-5">
             <div className="flex items-center gap-2 mb-3">
               <span className="material-symbols-outlined text-primary text-xl">campaign</span>
               <h3 className="font-headline font-bold text-base text-on-surface">
-                Scriptorium Gazette
+                Reading Rewards
               </h3>
             </div>
             <p className="font-body text-xs text-on-surface-variant leading-relaxed mb-4">
-              The Grand Inscriber has decreed that readers who record 5 marginalia notes this week shall be granted 50 Florins in bounty.
+              Read chapters daily to keep up your reading streak and earn 50 bonus coins every week!
             </p>
             <div className="p-3 rounded-lg bg-surface-container dark:bg-surface-container-high border border-[#E2D8B8]/60 dark:border-outline-variant/60 flex items-center justify-between font-label text-xs">
-              <span className="font-medium text-on-surface">Weekly Vigil Bounty</span>
+              <span className="font-medium text-on-surface">Weekly Reading Bonus</span>
               <span className="font-bold text-secondary">+50 🪙</span>
             </div>
           </div>
@@ -307,7 +307,7 @@ export default function Home() {
 
             <div className="border-t border-[#E2D8B8]/60 dark:border-outline-variant/60 pt-3 mb-4">
               <h4 className="font-label font-bold text-xs uppercase tracking-wider text-outline mb-1">
-                Folio Synopsis
+                Story Synopsis
               </h4>
               <p className="font-body text-xs sm:text-sm text-on-surface-variant leading-relaxed">
                 {activeBookModal.synopsis}
@@ -328,20 +328,20 @@ export default function Home() {
             <div className="flex items-center gap-3">
               <button
                 onClick={() => {
-                  alert(`Opened reading reader for: ${activeBookModal.title}`);
+                  alert(`Opening chapter reader for: ${activeBookModal.title}`);
                   setActiveBookModal(null);
                 }}
                 className="flex-1 py-2.5 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-label text-xs sm:text-sm font-semibold tracking-wide uppercase transition-colors shadow-sm text-center"
               >
-                Begin Reading ({activeBookModal.latestChapter})
+                Start Reading ({activeBookModal.latestChapter})
               </button>
               <button
                 onClick={() => {
-                  alert(`Added "${activeBookModal.title}" to your Inscribed Codex`);
+                  alert(`Added "${activeBookModal.title}" to your Bookmarks`);
                   setActiveBookModal(null);
                 }}
                 className="px-4 py-2.5 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface border border-[#E2D8B8] dark:border-outline-variant font-label text-xs font-semibold transition-colors"
-                title="Bookmark Folio"
+                title="Bookmark Story"
               >
                 Bookmark
               </button>

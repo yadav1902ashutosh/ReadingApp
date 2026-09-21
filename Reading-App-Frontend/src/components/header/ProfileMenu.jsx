@@ -44,32 +44,32 @@ export default function ProfileMenu() {
     }
   };
 
-  const displayName = userData?.fullName || userData?.username || "Boot Reader One";
-  const username = userData?.username || "boot_reader_one";
-  const email = userData?.email || "boot_reader_one@deckle.library";
+  const displayName = userData?.fullName || userData?.username || "Reader";
+  const username = userData?.username || "reader";
+  const email = userData?.email || "reader@deckle.app";
   const avatarUrl = userData?.avatar;
-  const avatarInitial = (username.trim()[0] || "B").toUpperCase();
-  const roleDisplay = userData?.role ? `${userData.role.toUpperCase()} • TIER IV` : "MASTER SCRIBE • TIER IV";
+  const avatarInitial = (username.trim()[0] || "R").toUpperCase();
+  const roleDisplay = userData?.role ? userData.role.toUpperCase() : "READER";
 
   const menuItems = [
     {
-      icon: "menu_book",
+      icon: "bookmark",
       iconColor: "text-primary",
-      label: "Inscribed Stacks & Folios",
-      badge: "3 Active",
+      label: "My Library & Bookmarks",
+      badge: "3 Saved",
       to: "/profile",
     },
     {
-      icon: "draw",
+      icon: "edit_note",
       iconColor: "text-secondary",
-      label: "Scriptorium Marginalia",
+      label: "My Notes & Highlights",
       badge: "48 Notes",
       to: "/profile",
     },
     {
       icon: "account_balance_wallet",
       iconColor: "text-tertiary",
-      label: "Treasury & Florin Coffers",
+      label: "Coins & Wallet",
       badge: "140 🪙",
       badgeStyle: "font-label-sm text-[11px] font-semibold text-secondary",
       to: "/profile",
@@ -77,7 +77,7 @@ export default function ProfileMenu() {
     {
       icon: "tune",
       iconColor: "text-on-surface-variant",
-      label: "Scribe Preferences & Font",
+      label: "Reading Settings & Font",
       chevron: true,
       to: "/profile",
     },
@@ -95,7 +95,7 @@ export default function ProfileMenu() {
             : "focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
         }`}
         onClick={() => setIsOpen((prev) => !prev)}
-        title={authStatus ? displayName : "Guest Scriptorium Menu"}
+        title={authStatus ? displayName : "Account Menu"}
       >
         {authStatus ? (
           <div className="relative">
@@ -176,7 +176,7 @@ export default function ProfileMenu() {
                       </p>
                     )}
                     <span className="font-label-sm text-[11px] text-primary font-semibold mt-1 group-hover:underline flex items-center gap-0.5">
-                      View Personal Study & Codex
+                      View Profile & Library
                       <span className="material-symbols-outlined text-[14px]">arrow_forward</span>
                     </span>
                   </div>
@@ -223,7 +223,7 @@ export default function ProfileMenu() {
                   onClick={handleLogout}
                 >
                   <span className="material-symbols-outlined text-[18px]">logout</span>
-                  <span>Log Out & Seal Scriptorium</span>
+                  <span>Log Out</span>
                 </button>
               </div>
             </>
@@ -234,10 +234,10 @@ export default function ProfileMenu() {
                 <span className="material-symbols-outlined text-2xl">auto_stories</span>
               </div>
               <h3 className="font-headline font-bold text-base text-on-surface">
-                Uninitiated Traveler
+                Welcome, Reader
               </h3>
               <p className="font-body text-xs text-on-surface-variant mt-1 mb-5 leading-relaxed max-w-[240px]">
-                Enter the Scriptorium to bind folios, record marginalia, and preserve your reading vigil.
+                Log in or sign up to bookmark your favorite stories, save reading progress, and earn bonus coins.
               </p>
 
               {/* Actions */}
@@ -248,7 +248,7 @@ export default function ProfileMenu() {
                   className="w-full py-2.5 px-4 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-label text-xs font-semibold uppercase tracking-wider flex items-center justify-center gap-2 shadow-sm transition-all"
                 >
                   <span className="material-symbols-outlined text-base">login</span>
-                  <span>Enter Scriptorium (Log In)</span>
+                  <span>Log In</span>
                 </Link>
 
                 <Link
@@ -256,8 +256,8 @@ export default function ProfileMenu() {
                   onClick={() => setIsOpen(false)}
                   className="w-full py-2 px-4 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label text-xs font-semibold uppercase tracking-wider flex items-center justify-center gap-2 transition-all border border-[#E2D8B8] dark:border-outline-variant"
                 >
-                  <span className="material-symbols-outlined text-base text-secondary">history_edu</span>
-                  <span>Enroll as Novitiate (Register)</span>
+                  <span className="material-symbols-outlined text-base text-secondary">person_add</span>
+                  <span>Create Account (Sign Up)</span>
                 </Link>
               </div>
             </div>
