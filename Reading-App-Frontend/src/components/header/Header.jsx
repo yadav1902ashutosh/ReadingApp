@@ -64,10 +64,10 @@ function Header() {
             className="fixed top-0 left-0 right-0 z-50 bg-[#FBF7EE]/95 dark:bg-[#1c1c17]/95 backdrop-blur-md border-b border-[#E2D8B8] dark:border-[#59413e] overflow-visible"
         >
             <div
-                className='h-20 w-full px-3 sm:px-6 lg:px-8 flex items-center justify-between gap-2 sm:gap-4 lg:gap-6 min-w-0'
+                className='relative h-20 w-full px-3 sm:px-6 lg:px-8 flex items-center justify-between gap-2 sm:gap-4 lg:gap-6 min-w-0'
             >
                 {/* Brand Logo & Title */}
-                <Link to="/" className="flex items-center gap-2 sm:gap-3.5 min-w-0 shrink-0 hover:opacity-90 transition-opacity">
+                <Link to="/" className="flex items-center gap-2 sm:gap-3.5 min-w-0 shrink-0 hover:opacity-90 transition-opacity z-10">
                     <img 
                         alt="Deckle Logo" 
                         className="h-7 sm:h-8 w-auto object-contain shrink-0" 
@@ -83,11 +83,13 @@ function Header() {
                     </div>
                 </Link>
 
-                {/* Embedded Modular Navbar */}
-                <Navbar activeTab={activeTab} onSelectTab={setActiveTab} />
+                {/* Dead-Centered Modular Navbar */}
+                <div className="hidden xl:flex absolute left-1/2 -translate-x-1/2 pointer-events-auto z-10">
+                    <Navbar activeTab={activeTab} onSelectTab={setActiveTab} />
+                </div>
 
                 {/* Right Actions: Search, Coins, Theme, Bookmark, Profile */}
-                <div className="flex items-center gap-1.5 sm:gap-2.5 md:gap-3 ml-auto min-w-0 shrink-0">
+                <div className="flex items-center gap-1.5 sm:gap-2.5 md:gap-3 ml-auto min-w-0 shrink-0 z-10">
                 
                     {/* Expandable Search: Compact 36px icon when not clicked */}
                     <div className="relative flex items-center shrink-0" ref={searchRef}>
