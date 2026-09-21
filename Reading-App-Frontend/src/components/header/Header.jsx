@@ -119,8 +119,10 @@ function Header() {
                         </Link>
                     </div>
 
-                    {/* Center Section: Dead-Centered Modular Navbar (Desktop only) */}
-                    <div className="hidden xl:flex absolute left-1/2 -translate-x-1/2 pointer-events-auto z-10">
+                    {/* Center Section: Dead-Centered Modular Navbar (Desktop only) - fades out smoothly when search is open to prevent overlap */}
+                    <div className={`hidden xl:flex absolute left-1/2 -translate-x-1/2 pointer-events-auto z-10 transition-all duration-300 ease-in-out ${
+                        isSearchOpen ? "opacity-0 pointer-events-none -translate-y-2 scale-95" : "opacity-100 translate-y-0 scale-100"
+                    }`}>
                         <Navbar activeTab={activeTab} onSelectTab={setActiveTab} />
                     </div>
 
@@ -187,10 +189,59 @@ function Header() {
                             )}
                         </div>
 
-                        {/* Expandable Search: Compact 36px icon when not clicked */}
+                        {/* Mobile Full-Width Search Overlay (< md) */}
+                        {isSearchOpen && (
+                            <div className="md:hidden absolute inset-x-2 top-1/2 -translate-y-1/2 z-40 flex items-center h-12 bg-[#FBF7EE] dark:bg-[#1c1c17] border border-[#D5C79E] dark:border-outline-variant rounded-full px-3 gap-2 shadow-xl animate-in fade-in zoom-in-95 duration-150">
+                                <button
+                                    type="button"
+                                    onClick={() => {
+                                        setIsSearchOpen(false);
+                                        setSearchQuery("");
+                                    }}
+                                    className="w-8 h-8 rounded-full hover:bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-on-surface shrink-0"
+                                    title="Back"
+                                >
+                                    <span className="material-symbols-outlined text-[20px]">arrow_back</span>
+                                </button>
+                                <input
+                                    ref={searchInputRef}
+                                    type="text"
+                                    value={searchQuery}
+                                    onChange={(e) => setSearchQuery(e.target.value)}
+                                    onKeyDown={handleSearchKeyDown}
+                                    className="flex-1 bg-transparent border-none outline-none font-body text-sm text-on-surface placeholder:text-on-surface-variant/60"
+                                    placeholder="Search stories, genres, authors..."
+                                />
+                                {searchQuery && (
+                                    <button
+                                        type="button"
+                                        onClick={() => setSearchQuery("")}
+                                        className="w-7 h-7 rounded-full hover:bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-on-surface shrink-0"
+                                        title="Clear"
+                                    >
+                                        <span className="material-symbols-outlined text-[16px]">close</span>
+                                    </button>
+                                )}
+                                <button
+                                    type="button"
+                                    onClick={() => {
+                                        if (searchQuery.trim()) {
+                                            navigate(`/browse?search=${encodeURIComponent(searchQuery.trim())}`);
+                                            setIsSearchOpen(false);
+                                        }
+                                    }}
+                                    className="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center shrink-0 shadow-sm"
+                                    title="Search"
+                                >
+                                    <span className="material-symbols-outlined text-[18px]">search</span>
+                                </button>
+                            </div>
+                        )}
+
+                        {/* Expandable Search: Desktop inline expansion, Mobile trigger */}
                         <div className="relative flex items-center shrink-0" ref={searchRef}>
                             {isSearchOpen ? (
-                                <div className="flex items-center h-9 bg-[#F5EEDB] dark:bg-surface-container-high border border-[#D5C79E] dark:border-outline-variant rounded-full pl-2.5 pr-1.5 gap-1.5 text-on-surface-variant focus-within:border-primary-container shadow-inner transition-all animate-in fade-in duration-150">
+                                <div className="hidden md:flex items-center h-9 bg-[#F5EEDB] dark:bg-surface-container-high border border-[#D5C79E] dark:border-outline-variant rounded-full pl-3 pr-1.5 gap-2 text-on-surface-variant focus-within:border-primary shadow-inner transition-all animate-in fade-in duration-150">
                                     <span className="material-symbols-outlined text-[18px] text-primary shrink-0">search</span>
                                     <input 
                                         ref={searchInputRef}
@@ -198,8 +249,8 @@ function Header() {
                                         value={searchQuery}
                                         onChange={(e) => setSearchQuery(e.target.value)}
                                         onKeyDown={handleSearchKeyDown}
-                                        className="bg-transparent border-none outline-none font-body text-xs sm:text-sm w-28 sm:w-44 md:w-56 text-on-surface placeholder:text-on-surface-variant/60" 
-                                        placeholder="Search stories..." 
+                                        className="bg-transparent border-none outline-none font-body text-xs sm:text-sm w-44 md:w-56 lg:w-72 text-on-surface placeholder:text-on-surface-variant/60" 
+                                        placeholder="Search stories, genres, tags..." 
                                     />
                                     <button
                                         type="button"
@@ -226,23 +277,23 @@ function Header() {
                             )}
                         </div>
 
-                        {/* Coins Counter: Visible on all screens, compact when idle */}
+                        {/* Coins Counter: Visible on all screens, prominent + button */}
                         {authStatus && (
                             <div className="relative shrink-0" ref={coinsRef}>
                                 <button
                                     type="button"
                                     onClick={() => setIsCoinsOpen((prev) => !prev)}
-                                    className={`flex items-center h-9 bg-surface-container-low dark:bg-surface-container-high border border-[#E2D8B8] dark:border-outline-variant rounded-full px-2 sm:px-2.5 gap-1 transition-all text-on-surface shrink-0 hover:border-primary/60 outline-none shadow-sm ${
+                                    className={`group flex items-center h-9 bg-surface-container-low dark:bg-surface-container-high border border-[#E2D8B8] dark:border-outline-variant rounded-full px-2.5 sm:px-3 gap-1.5 transition-all text-on-surface shrink-0 hover:border-primary/60 outline-none shadow-sm ${
                                         isCoinsOpen ? "ring-2 ring-primary/40 border-primary" : ""
                                     }`}
                                     title="Coins Balance & Top Up"
                                 >
-                                    <span className="text-xs shrink-0">🪙</span>
+                                    <span className="text-sm shrink-0">🪙</span>
                                     <span className="font-label font-bold text-xs text-tertiary dark:text-tertiary-fixed-dim">
                                         140
                                     </span>
-                                    <span className="flex items-center justify-center w-4 h-4 rounded-full bg-primary/10 text-primary dark:text-primary-fixed text-[11px] font-bold shrink-0 ml-0.5">
-                                        +
+                                    <span className="flex items-center justify-center w-5 h-5 rounded-full bg-primary text-on-primary shrink-0 ml-0.5 shadow-xs group-hover:scale-110 transition-transform">
+                                        <span className="material-symbols-outlined text-[14px] leading-none font-bold">add</span>
                                     </span>
                                 </button>
 
