@@ -6,10 +6,9 @@ function Navbar({ activeTab = 'Home', onSelectTab }) {
 
     const navItems = [
         { id: 'home', label: 'Home', to: '/home' },
-        { id: 'browse', label: 'Browse', to: '/home' },
-        { id: 'genres', label: 'Genres', to: '/home' },
-        { id: 'library', label: 'My Library', to: '/profile' },
-        { id: 'updates', label: 'Latest Updates', to: '/home' },
+        { id: 'library', label: 'Library', to: '/library' },
+        { id: 'genres', label: 'Genres', to: '/library' },
+        { id: 'rankings', label: 'Rankings', to: '/rankings' },
         { id: 'community', label: 'Community', to: '/home' },
     ];
 
@@ -20,8 +19,8 @@ function Navbar({ activeTab = 'Home', onSelectTab }) {
             {
                 navItems.map((item) => {
                     const isCurrentRoute = 
-                        (item.to === '/profile' && location.pathname === '/profile') ||
-                        (item.to === '/home' && (location.pathname === '/home' || location.pathname === '/') && activeTab === item.label);
+                        (item.to === '/home' && (location.pathname === '/home' || location.pathname === '/')) ||
+                        (item.to !== '/home' && location.pathname === item.to);
                     const isActive = isCurrentRoute || activeTab === item.label;
 
                     return (

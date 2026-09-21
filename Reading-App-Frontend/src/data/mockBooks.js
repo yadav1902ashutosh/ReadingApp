@@ -96,6 +96,38 @@ export const FEATURED_BOOKS = [
     updatedAt: "5h ago",
     badge: "New Release",
     tags: ["Ruins", "Cosmic Lore", "Ancient Tongues"]
+  },
+  {
+    id: "folio-7",
+    title: "System Reboot: Dungeon Architect",
+    author: "ZeroBit",
+    category: "LitRPG & Progression",
+    cover: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=600&q=80",
+    synopsis: "Reincarnated not as a hero or a monster, but as the procedural generation engine of an infinite planetary dungeon. To survive, he must design deathtraps that test immortal gods.",
+    rating: 4.9,
+    readers: "61.3k",
+    chapters: 340,
+    status: "Ongoing",
+    latestChapter: "Chapter 340: Floor 77 Core Calibration",
+    updatedAt: "30m ago",
+    badge: "Trending #2",
+    tags: ["LitRPG", "Dungeon", "Strategy", "System"]
+  },
+  {
+    id: "folio-8",
+    title: "Letters to the Autumn Moon",
+    author: "Cynthia Valerius",
+    category: "Romance & Drama",
+    cover: "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=600&q=80",
+    synopsis: "A forbidden correspondence between a disgraced royal archivist and the exiled heir of the Northern Provinces unfolds across secret wax-sealed letters.",
+    rating: 4.7,
+    readers: "24.8k",
+    chapters: 160,
+    status: "Completed",
+    latestChapter: "Epilogue: Under the Gold Ginkgo Trees",
+    updatedAt: "2d ago",
+    badge: "Completed",
+    tags: ["Romance", "Epistolary", "Historical", "Drama"]
   }
 ];
 
