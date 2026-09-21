@@ -127,18 +127,18 @@ function Header() {
                     {/* Right Actions Cluster: Create/Write, Search, Coins, Theme, Bookmark, Profile */}
                     <div className="flex items-center gap-1.5 sm:gap-2.5 md:gap-3 ml-auto min-w-0 shrink-0 z-10">
                     
-                        {/* YouTube-style [ + Write ] Button with Dropdown */}
+                        {/* YouTube-style Write Button (Icon-only like search) */}
                         <div className="relative shrink-0" ref={createRef}>
                             <button
                                 type="button"
                                 onClick={() => setIsCreateOpen((prev) => !prev)}
-                                className={`flex items-center gap-1.5 h-9 px-2.5 sm:px-3.5 rounded-full bg-surface-container-low dark:bg-surface-container-high hover:bg-surface-container border border-[#E2D8B8] dark:border-outline-variant text-on-surface font-label text-xs font-semibold shadow-sm transition-all hover:border-primary/60 outline-none ${
-                                    isCreateOpen ? "ring-2 ring-primary/40 border-primary" : ""
+                                className={`flex items-center justify-center w-9 h-9 rounded-full bg-surface-container hover:bg-surface-container-high border border-[#E2D8B8] dark:border-outline-variant text-on-surface-variant hover:text-primary transition-colors shrink-0 shadow-sm outline-none ${
+                                    isCreateOpen ? "ring-2 ring-primary/40 border-primary text-primary" : ""
                                 }`}
-                                title="Create or Write a Story"
+                                aria-label="Create or write a story"
+                                title="Write / Create Story"
                             >
-                                <span className="material-symbols-outlined text-[18px] text-primary">edit_square</span>
-                                <span className="hidden sm:inline">Write</span>
+                                <span className="material-symbols-outlined text-[18px]">edit_square</span>
                             </button>
 
                             {/* Dropdown Options */}
