@@ -293,7 +293,18 @@ function Header() {
                                         140
                                     </span>
                                     <span className="flex items-center justify-center w-5 h-5 rounded-full bg-primary text-on-primary shrink-0 ml-0.5 shadow-xs group-hover:scale-110 transition-transform">
-                                        <span className="material-symbols-outlined text-[14px] leading-none font-bold">add</span>
+                                        <svg 
+                                            className="w-3 h-3" 
+                                            viewBox="0 0 24 24" 
+                                            fill="none" 
+                                            stroke="currentColor" 
+                                            strokeWidth="3.5" 
+                                            strokeLinecap="round" 
+                                            strokeLinejoin="round"
+                                        >
+                                            <line x1="12" y1="5" x2="12" y2="19" />
+                                            <line x1="5" y1="12" x2="19" y2="12" />
+                                        </svg>
                                     </span>
                                 </button>
 
@@ -315,9 +326,12 @@ function Header() {
                                                 alert("Opening Coin Top-Up Store...");
                                                 setIsCoinsOpen(false);
                                             }}
-                                            className="w-full py-1.5 px-3 rounded-xl bg-primary hover:bg-primary-container text-on-primary font-label text-xs font-semibold transition-colors shadow-sm flex items-center justify-center gap-1"
+                                            className="w-full py-1.5 px-3 rounded-xl bg-primary hover:bg-primary-container text-on-primary font-label text-xs font-semibold transition-colors shadow-sm flex items-center justify-center gap-1.5"
                                         >
-                                            <span>+</span>
+                                            <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                                                <line x1="12" y1="5" x2="12" y2="19" />
+                                                <line x1="5" y1="12" x2="19" y2="12" />
+                                            </svg>
                                             <span>Top Up Coins</span>
                                         </button>
                                     </div>
