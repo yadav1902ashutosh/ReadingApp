@@ -181,9 +181,9 @@ function Header() {
 
                     {/* Bookmark Badge */}
                     <Link 
-                        to={authStatus ? "/profile" : "/login"}
+                        to="/bookshelf"
                         className="relative flex items-center justify-center w-9 h-9 rounded-full bg-surface-container hover:bg-surface-container-high border border-[#E2D8B8] dark:border-outline-variant cursor-pointer text-on-surface-variant transition-colors shrink-0 shadow-sm"
-                        title="Bookmarks & Reading List"
+                        title="Bookshelf & Bookmarks"
                     >
                         <span className="material-symbols-outlined text-[19px]">bookmark_added</span>
                         <span className="absolute -top-0.5 -right-0.5 w-2 h-2.5 bg-primary-container rounded-sm shadow-sm"></span>

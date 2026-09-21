@@ -26,6 +26,7 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import Home from './pages/Home.jsx'
 import Browse from './pages/Browse.jsx'
 import Rankings from './pages/Rankings.jsx'
+import Bookshelf from './pages/Bookshelf.jsx'
 import Login from './pages/Login.jsx'
 import Signup from './pages/Signup.jsx'
 import {Profile} from './components/index.js'
@@ -54,6 +55,10 @@ const router = createBrowserRouter(
         {
           path: "/rankings",
           element: <Rankings />,
+        },
+        {
+          path: "/bookshelf",
+          element: <Bookshelf />,
         },
         {
           path: "/profile",

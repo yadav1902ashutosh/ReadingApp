@@ -8,6 +8,7 @@ function Navbar({ activeTab = 'Home', onSelectTab }) {
         { id: 'home', label: 'Home', to: '/home' },
         { id: 'browse', label: 'Browse', to: '/browse' },
         { id: 'rankings', label: 'Rankings', to: '/rankings' },
+        { id: 'bookshelf', label: 'Bookshelf', to: '/bookshelf' },
         { id: 'community', label: 'Community', to: '/home' },
     ];
 

@@ -57,7 +57,7 @@ export default function ProfileMenu() {
       iconColor: "text-primary",
       label: "Bookshelf (Saved & History)",
       badge: "3 Saved",
-      to: "/profile",
+      to: "/bookshelf",
     },
     {
       icon: "edit_note",
