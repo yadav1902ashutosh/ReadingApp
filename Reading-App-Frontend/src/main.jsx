@@ -24,7 +24,7 @@ import 'material-symbols'
 
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import Home from './pages/Home.jsx'
-import Library from './pages/Library.jsx'
+import Browse from './pages/Browse.jsx'
 import Rankings from './pages/Rankings.jsx'
 import Login from './pages/Login.jsx'
 import Signup from './pages/Signup.jsx'
@@ -44,8 +44,12 @@ const router = createBrowserRouter(
           element: <Home />,
         },
         {
+          path: "/browse",
+          element: <Browse />,
+        },
+        {
           path: "/library",
-          element: <Library />,
+          element: <Browse />,
         },
         {
           path: "/rankings",

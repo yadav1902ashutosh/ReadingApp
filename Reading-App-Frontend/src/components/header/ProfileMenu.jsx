@@ -53,9 +53,9 @@ export default function ProfileMenu() {
 
   const menuItems = [
     {
-      icon: "bookmark",
+      icon: "shelves",
       iconColor: "text-primary",
-      label: "My Library & Bookmarks",
+      label: "Bookshelf (Saved & History)",
       badge: "3 Saved",
       to: "/profile",
     },

@@ -2,7 +2,7 @@ import React, { useState, useMemo } from "react";
 import { useSearchParams } from "react-router-dom";
 import { FEATURED_BOOKS } from "../data/mockBooks";
 
-export default function Library() {
+export default function Browse() {
   const [searchParams, setSearchParams] = useSearchParams();
   const initialGenre = searchParams.get("genre") || "All";
 
@@ -72,14 +72,14 @@ export default function Library() {
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-[#E2D8B8] dark:border-outline-variant pb-6">
           <div>
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/10 dark:bg-primary-fixed/20 text-primary dark:text-primary-fixed font-label text-xs font-semibold uppercase tracking-wider mb-2">
-              <span className="material-symbols-outlined text-sm">local_library</span>
-              Complete Library Catalog
+              <span className="material-symbols-outlined text-sm">explore</span>
+              Story Catalog
             </div>
             <h1 className="font-headline font-bold text-2xl sm:text-4xl text-on-surface tracking-tight">
-              Explore All Stories &amp; Web Novels
+              Browse All Stories &amp; Web Novels
             </h1>
             <p className="font-body text-xs sm:text-sm text-on-surface-variant mt-1.5 max-w-2xl leading-relaxed">
-              Browse our full collection of serialized novels, translations, and original fanfiction. Filter by genre, status, or search for titles.
+              Explore the entire catalog of serialized novels, translations, and fanfiction. Filter by genre, status, or search for titles.
             </p>
           </div>
 
@@ -256,10 +256,10 @@ export default function Library() {
               <div className="px-4 py-2.5 bg-surface-container-low/60 dark:bg-surface-container-high/40 border-t border-[#E2D8B8]/60 dark:border-outline-variant/60 flex items-center justify-between gap-2">
                 <button
                   onClick={() => {
-                    alert(`Added "${book.title}" to your Bookmarks`);
+                    alert(`Added "${book.title}" to your Bookshelf`);
                   }}
                   className="p-1.5 rounded-lg text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors"
-                  title="Bookmark Story"
+                  title="Save to Bookshelf"
                 >
                   <span className="material-symbols-outlined text-[18px]">bookmark_add</span>
                 </button>
@@ -361,13 +361,13 @@ export default function Library() {
               </button>
               <button
                 onClick={() => {
-                  alert(`Added "${activeBookModal.title}" to your Bookmarks`);
+                  alert(`Added "${activeBookModal.title}" to your Bookshelf`);
                   setActiveBookModal(null);
                 }}
                 className="px-4 py-2.5 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface border border-[#E2D8B8] dark:border-outline-variant font-label text-xs font-semibold transition-colors"
-                title="Bookmark Story"
+                title="Save to Bookshelf"
               >
-                Bookmark
+                Save to Bookshelf
               </button>
             </div>
           </div>

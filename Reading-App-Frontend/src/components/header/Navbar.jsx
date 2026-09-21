@@ -6,8 +6,7 @@ function Navbar({ activeTab = 'Home', onSelectTab }) {
 
     const navItems = [
         { id: 'home', label: 'Home', to: '/home' },
-        { id: 'library', label: 'Library', to: '/library' },
-        { id: 'genres', label: 'Genres', to: '/library' },
+        { id: 'browse', label: 'Browse', to: '/browse' },
         { id: 'rankings', label: 'Rankings', to: '/rankings' },
         { id: 'community', label: 'Community', to: '/home' },
     ];
