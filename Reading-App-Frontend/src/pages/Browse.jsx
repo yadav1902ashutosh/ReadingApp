@@ -191,7 +191,7 @@ export default function Browse() {
             >
               <div className="p-4">
                 {/* Cover & Badges */}
-                <div className="relative aspect-[3/4] w-full rounded-lg overflow-hidden mb-3 bg-surface-container-high border border-[#E2D8B8]/60 dark:border-outline-variant/60">
+                <div className="relative aspect-3/4 w-full rounded-lg overflow-hidden mb-3 bg-surface-container-high border border-[#E2D8B8]/60 dark:border-outline-variant/60">
                   <img
                     src={book.cover}
                     alt={book.title}

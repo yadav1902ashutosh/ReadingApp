@@ -27,6 +27,7 @@ import Home from './pages/Home.jsx'
 import Browse from './pages/Browse.jsx'
 import Rankings from './pages/Rankings.jsx'
 import Bookshelf from './pages/Bookshelf.jsx'
+import Write from './pages/Write.jsx'
 import Login from './pages/Login.jsx'
 import Signup from './pages/Signup.jsx'
 import {Profile} from './components/index.js'
@@ -59,6 +60,10 @@ const router = createBrowserRouter(
         {
           path: "/bookshelf",
           element: <Bookshelf />,
+        },
+        {
+          path: "/write",
+          element: <Write />,
         },
         {
           path: "/profile",

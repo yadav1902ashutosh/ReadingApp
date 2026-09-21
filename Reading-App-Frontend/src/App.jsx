@@ -4,7 +4,6 @@ import { login as authLogin, logout as authLogout } from './store/authSlice'
 import authService from './auth/auth'
 import './App.css'
 import Header from './components/header/Header'
-import MobileNav from './components/header/MobileNav'
 import Footer from './components/footer/Footer'
 import { Outlet } from 'react-router-dom'
 
@@ -28,11 +27,10 @@ function App() {
   return (
     <>
       <Header />
-      <main className="pb-20 xl:pb-0">
+      <main>
         <Outlet />
       </main>
       <Footer />
-      <MobileNav />
     </>
   )
 }
